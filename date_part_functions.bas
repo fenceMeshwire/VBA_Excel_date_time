@@ -40,7 +40,8 @@ End Function
 Function get_second(dteDate As Date)
   get_second = DatePart("s", dteDate)
 End Function
-Sub test()
+
+Sub get_date_parts()
 
 Dim dteDate As Date
 

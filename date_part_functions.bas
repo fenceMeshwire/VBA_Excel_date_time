@@ -25,8 +25,8 @@ Function get_weekday(dteDate As Date)
   get_weekday = WeekdayName(Weekday(dteDate, vbUseSystemDayOfWeek), False)
 End Function
 
-Function get_calendar_weekday(dteDate As Date)
-  get_calendar_weekday = DatePart("ww", dteDate)
+Function get_calendar_week(dteDate As Date)
+  get_calendar_week = DatePart("ww", dteDate)
 End Function
 
 Function get_hour(dteDate As Date)
@@ -53,7 +53,7 @@ Debug.Print get_day_of_year(dteDate)
 Debug.Print get_month(dteDate)
 Debug.Print get_day(dteDate)
 Debug.Print get_weekday(dteDate)
-Debug.Print get_calendar_weekday(dteDate)
+Debug.Print get_calendar_week(dteDate)
 Debug.Print get_hour(dteDate)
 Debug.Print get_minute(dteDate)
 Debug.Print get_second(dteDate)

@@ -1,23 +1,23 @@
 Option Explicit
 
-Function get_year(ByVal dteDate As Date)
+Function get_year(dteDate As Date)
   get_year = DatePart("yyyy", dteDate)
 End Function
 
-Function get_quarter(ByVal dteDate As Date)
+Function get_quarter(dteDate As Date)
   get_quarter = DatePart("q", dteDate)
 End Function
 
-Function get_month(ByVal dteDate As Date)
+Function get_month(dteDate As Date)
   get_month = DatePart("m", dteDate)
 End Function
 
-Function get_day_of_year(ByVal dteDate As Date)
+Function get_day_of_year(dteDate As Date)
   ' Day of the year is to be understood as the day x of 365
   get_day_of_year = DatePart("y", dteDate)
 End Function
 
-Function get_day(ByVal dteDate As Date)
+Function get_day(dteDate As Date)
   get_day = DatePart("d", dteDate)
 End Function
 

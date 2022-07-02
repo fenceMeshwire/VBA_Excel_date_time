@@ -1,5 +1,46 @@
 Option Explicit
 
+' First day of the year
+Const dteCalBeginDate = "01.01.2022"
+' Bank holidays
+Const dteNeujahr = "01.01.2022"
+Const dteHlgDreiKoenige = "06.01.2022"
+Const dteKarfreitag = "15.04.2022"
+Const dteOsterSonntag = "17.04.2022"
+Const dteOstermontag = "18.04.2022"
+Const dteTagDerArbeit = "01.05.2022"
+Const dteChristiHimmelfahrt = "26.05.2022"
+Const dtePfingstsonntag = "05.06.2022"
+Const dtePfingstMontag = "06.06.2022"
+Const dteFronleichnam = "16.06.2022"
+Const dteMHimmelfahrt = "15.08.2022"
+Const dteTagDEinheit = "03.10.2022"
+Const dteAllerheiligen = "01.11.2022"
+Const dteWeihnachtsfeiertag1 = "25.12.2022"
+Const dteWeihnachtsfeiertag2 = "26.12.2022"
+'Previous Christmas Vacations
+Const dtePrevChristmasStart = "01.01.2022"
+Const dtePrevChristmasEnd = "06.01.2022"
+' Winter Vacations
+Const dteWinterStart = "28.02.2022"
+Const dteWinterEnd = "04.03.2022"
+' Easter Vacations
+Const dteEasterStart = "11.04.2022"
+Const dteEasterEnd = "23.04.2022"
+' Pfingsten
+Const dtePfingstenStart = "07.06.2022"
+Const dtePfingstenEnd = "18.06.2022"
+' Summer Vacations
+Const dteSummerStart = "01.08.2022"
+Const dteSummerEnd = "12.09.2022"
+' Autumn Vacations
+Const dteAutumnStart = "31.10.2022"
+Const dteAutumnEnd = "04.11.2022"
+' Christmas Vacations
+Const dteChristmasStart = "24.12.2022"
+Const dteChristmasEnd = "31.12.2022"
+
+' ======================================================================
 Sub Calendar()
 
 Dim intRow, intRowMax, intCol, intColMax As Integer
@@ -28,22 +69,24 @@ dictMonth.Add "12", "December"
 objKeysMonth = dictMonth.keys
 objValuesMonth = dictMonth.items
 
-dteDate = "01.01.2022"
+dteDate = dteCalBeginDate
 dteToday = Format(Now(), "dd.mm.yyyy")
 Sheet1.UsedRange.Clear
 
 intColMax = 12
 For intCol = 1 To intColMax
   Sheet1.Cells(1, intCol).Value = objValuesMonth(intCol - 1)
+  Sheet1.Cells(1, intCol).BorderAround ColorIndex:=1, Weight:=xlThin
   intRow = 2
   Do While bleCancel = False
     intMonth = Month(dteDate)
-    Debug.Print (intMonth)
     If intMonth <> intCol Then
       bleCancel = True
       Exit Do
     Else
       Sheet1.Cells(intRow, intCol).Value = dteDate
+      Sheet1.Cells(intRow, intCol).BorderAround _
+        ColorIndex:=1, Weight:=xlThin
       Call Weekend(intRow, intCol)
       Call Vacations(intRow, intCol)
       Call BankHoliday(intRow, intCol)
@@ -78,42 +121,18 @@ End Sub
 Sub Vacations(intRow, intCol)
 
 Dim dteDate As Date
-Dim dteWinterStart, dteWinterEnd As Date
-Dim dteEasterStart, dteEasterEnd As Date
-Dim dtePfingstenStart, dtePfingstenEnd As Date
-Dim dteSummerStart, dteSummerEnd As Date
-Dim dteAutumnStart, dteAutumnEnd As Date
-Dim dteChristmasStart, dteChristmasEnd As Date
-
-' Winter Vacations
-dteWinterStart = "28.02.2022"
-dteWinterEnd = "04.03.2022"
-
-' Easter Vacations
-dteEasterStart = "11.04.2022"
-dteEasterEnd = "23.04.2022"
-
-' Pfingsten
-dtePfingstenStart = "07.06.2022"
-dtePfingstenEnd = "18.06.2022"
-
-' Summer Vacations
-dteSummerStart = "01.08.2022"
-dteSummerEnd = "12.09.2022"
-
-' Autumn Vacations
-dteAutumnStart = "31.10.2022"
-dteAutumnEnd = "04.11.2022"
-
-' Christmas Vacations
-dteChristmasStart = "24.12.2022"
-dteChristmasEnd = "31.12.2022"
 
 With Sheet1
   
   If IsDate(.Cells(intRow, intCol).Value) Then
   dteDate = .Cells(intRow, intCol).Value
-    ' Winter holiday
+    ' Previous christmas holidays
+    If dtePrevChristmasStart <= dteDate And dteDate <= dtePrevChristmasEnd Then
+      If Weekday(.Cells(intRow, intCol).Value, vbMonday) <= 5 Then
+        Sheet1.Cells(intRow, intCol).Interior.ColorIndex = 15
+      End If
+    End If
+    ' Winter holidays
     If dteWinterStart <= dteDate And dteDate <= dteWinterEnd Then
       If Weekday(.Cells(intRow, intCol).Value, vbMonday) <= 5 Then
         Sheet1.Cells(intRow, intCol).Interior.ColorIndex = 15
@@ -158,26 +177,6 @@ End Sub
 Sub BankHoliday(intRow, intCol)
 
 Dim dteDate As Date
-Dim dteNeujahr, dteHlgDreiKoenige, dteKarfreitag, dteOsterSonntag As Date
-Dim dteOstermontag, dteTagDerArbeit, dteChristiHimmelfahrt, dtePfingstsonntag As Date
-Dim dtePfingstMontag, dteFronleichnam, dteMHimmelfahrt, dteTagDEinheit As Date
-Dim dteAllerheiligen, dteWeihnachtsfeiertag1, dteWeihnachtsfeiertag2 As Date
-
-dteNeujahr = "01.01.2022"
-dteHlgDreiKoenige = "06.01.2022"
-dteKarfreitag = "15.04.2022"
-dteOsterSonntag = "17.04.2022"
-dteOstermontag = "18.04.2022"
-dteTagDerArbeit = "01.05.2022"
-dteChristiHimmelfahrt = "26.05.2022"
-dtePfingstsonntag = "05.06.2022"
-dtePfingstMontag = "06.06.2022"
-dteFronleichnam = "16.06.2022"
-dteMHimmelfahrt = "15.08.2022"
-dteTagDEinheit = "03.10.2022"
-dteAllerheiligen = "01.11.2022"
-dteWeihnachtsfeiertag1 = "25.12.2022"
-dteWeihnachtsfeiertag2 = "26.12.2022"
 
 If IsDate(Sheet1.Cells(intRow, intCol).Value) Then
   dteDate = Sheet1.Cells(intRow, intCol).Value
@@ -214,7 +213,7 @@ Sheet1.Cells(intRowMax + 3, 1).Interior.ColorIndex = 15
 Sheet1.Cells(intRowMax + 4, 1).Interior.ColorIndex = 50
 Sheet1.Cells(intRowMax + 5, 1).Value = "X"
 Sheet1.Cells(intRowMax + 2, 2).Value = "Weekend"
-Sheet1.Cells(intRowMax + 3, 2).Value = "School Vacation for Bavaria"
+Sheet1.Cells(intRowMax + 3, 2).Value = "School Vacation for Bavaria, Germany"
 Sheet1.Cells(intRowMax + 4, 2).Value = "Bank holiday"
 Sheet1.Cells(intRowMax + 5, 2).Value = "Days passed in current year"
 

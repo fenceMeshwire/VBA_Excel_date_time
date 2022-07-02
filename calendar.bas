@@ -18,25 +18,25 @@ Const dteTagDEinheit = "03.10.2022"
 Const dteAllerheiligen = "01.11.2022"
 Const dteWeihnachtsfeiertag1 = "25.12.2022"
 Const dteWeihnachtsfeiertag2 = "26.12.2022"
-'Previous Christmas Vacations
+'Previous Christmas vacations
 Const dtePrevChristmasStart = "01.01.2022"
 Const dtePrevChristmasEnd = "06.01.2022"
-' Winter Vacations
+' Winter vacations
 Const dteWinterStart = "28.02.2022"
 Const dteWinterEnd = "04.03.2022"
-' Easter Vacations
+' Easter vacations
 Const dteEasterStart = "11.04.2022"
 Const dteEasterEnd = "23.04.2022"
-' Pfingsten
+' Pfingsten vacations
 Const dtePfingstenStart = "07.06.2022"
 Const dtePfingstenEnd = "18.06.2022"
-' Summer Vacations
+' Summer vacations
 Const dteSummerStart = "01.08.2022"
 Const dteSummerEnd = "12.09.2022"
-' Autumn Vacations
+' Autumn vacations
 Const dteAutumnStart = "31.10.2022"
 Const dteAutumnEnd = "04.11.2022"
-' Christmas Vacations
+' Christmas vacations
 Const dteChristmasStart = "24.12.2022"
 Const dteChristmasEnd = "31.12.2022"
 

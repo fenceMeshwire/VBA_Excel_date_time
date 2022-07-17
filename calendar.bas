@@ -49,25 +49,20 @@ Dim bleCancel As Boolean
 Dim dteDate, dteToday As Date
 Dim strMonth As String
 
-Dim dictMonth As Object
-Dim objKeysMonth, objValuesMonth
+Dim varDat(1 To 12) As Variant
 
-Set dictMonth = CreateObject("Scripting.Dictionary")
-dictMonth.Add "1", "January"
-dictMonth.Add "2", "February"
-dictMonth.Add "3", "March"
-dictMonth.Add "4", "April"
-dictMonth.Add "5", "May"
-dictMonth.Add "6", "June"
-dictMonth.Add "7", "July"
-dictMonth.Add "8", "August"
-dictMonth.Add "9", "September"
-dictMonth.Add "10", "October"
-dictMonth.Add "11", "November"
-dictMonth.Add "12", "December"
-
-objKeysMonth = dictMonth.keys
-objValuesMonth = dictMonth.items
+varDat(1) = "January"
+varDat(2) = "February"
+varDat(3) = "March"
+varDat(4) = "April"
+varDat(5) = "May"
+varDat(6) = "June"
+varDat(7) = "July"
+varDat(8) = "August"
+varDat(9) = "September"
+varDat(10) = "October"
+varDat(11) = "November"
+varDat(12) = "December"
 
 dteDate = dteCalBeginDate
 dteToday = Format(Now(), "dd.mm.yyyy")
@@ -75,7 +70,7 @@ Sheet1.UsedRange.Clear
 
 intColMax = 12
 For intCol = 1 To intColMax
-  Sheet1.Cells(1, intCol).Value = objValuesMonth(intCol - 1)
+  Sheet1.Cells(1, intCol).Value = varDat(intCol)
   Sheet1.Cells(1, intCol).BorderAround ColorIndex:=1, Weight:=xlThin
   intRow = 2
   Do While bleCancel = False

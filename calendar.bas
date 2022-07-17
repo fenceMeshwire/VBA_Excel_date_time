@@ -1,5 +1,7 @@
 Option Explicit
 
+' PLEASE NOTE: Rename the worksheet for output to "Sheet1"
+
 ' First day of the year
 Const dteCalBeginDate = "01.01.2022"
 ' Bank holidays

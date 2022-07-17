@@ -1,6 +1,6 @@
 Option Explicit
 
-' PLEASE NOTE: Rename the worksheet for output to "Sheet1"
+' PLEASE NOTE: Rename the Worksheet for output to "Sheet1"
 
 ' First day of the year
 Const dteCalBeginDate = "01.01.2022"
